@@ -1,0 +1,28 @@
+int i; 
+const int LEDS_AMOUNT = 7;
+
+void setup() { 
+  for(i = 1; i <= LEDS_AMOUNT; i++){ 
+    pinMode(i,OUTPUT); 
+    digitalWrite(i,LOW); 
+  }
+} 
+void loop() { 
+  // going
+  for(i = 1; i <= LEDS_AMOUNT; i++){ 
+    if ( (i%2)==0 ) {
+      digitalWrite(i,HIGH); 
+      delay(100); 
+      digitalWrite(i,LOW); 
+    }
+  }
+
+  // turn
+  for(i = LEDS_AMOUNT; i >= 1; i--){ 
+    if ( (i%2)!=0 ) {
+      digitalWrite(i,HIGH); 
+      delay(100); 
+      digitalWrite(i,LOW);       
+    }
+  }
+}

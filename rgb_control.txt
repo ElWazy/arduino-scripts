@@ -1,0 +1,28 @@
+const int COUNT = 3;
+
+const int ledRGB[COUNT] = {11, 10, 9};
+const int potentiometers[COUNT] = {A0, A1, A2};
+
+void setup() { 
+  Serial.begin(9600);  //esta sentencia es necesaria para usar la pantalla  
+  for (int i = 0; i < COUNT; i++) {
+    pinMode(ledRGB[i], OUTPUT);   
+  }
+}
+
+void loop() {
+  int color[3];
+  // a la vez...
+  for(int i = 0; i < COUNT; i++) {
+    color[i] = analogRead(potentiometers[i]) / 4; // Capturamos el valor del potenciometro
+    analogWrite(ledRGB[i], color[i]); // Le asignamos el valor a su led correspondiente
+  }
+  
+  Serial.print("R: ");
+  Serial.print(color[0]);
+  Serial.print(", G: ");
+  Serial.print(color[1]); 
+  Serial.print(", B: ");
+  Serial.println(color[2]);
+  delay(100);
+}
